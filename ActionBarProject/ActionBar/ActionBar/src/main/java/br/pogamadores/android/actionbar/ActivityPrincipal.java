@@ -53,6 +53,7 @@ public class ActivityPrincipal extends ActionBarActivity implements ActionBar.On
                         }
                     }
                 });
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
     }
 
     @Override
@@ -155,6 +156,7 @@ public class ActivityPrincipal extends ActionBarActivity implements ActionBar.On
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
         MenuItem busca = mMenu.findItem(R.id.item_busca);
@@ -167,6 +169,7 @@ public class ActivityPrincipal extends ActionBarActivity implements ActionBar.On
         actionBar.setTitle(R.string.app_name);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
         MenuItem busca = mMenu.findItem(R.id.item_busca);
