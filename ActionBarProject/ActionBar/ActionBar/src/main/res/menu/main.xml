@@ -2,7 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="br.pogamadores.android.actionbar.ActivityPrincipal" >
-    
+
+    <item android:id="@+id/item_busca"
+        android:title="@string/search"
+        android:icon="@drawable/action_search"/>
+
     <item android:id="@+id/action_settings"
         android:title="@string/configuracoes"
         android:orderInCategory="100"

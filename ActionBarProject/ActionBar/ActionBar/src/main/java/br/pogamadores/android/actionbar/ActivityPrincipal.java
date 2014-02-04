@@ -2,12 +2,14 @@ package br.pogamadores.android.actionbar;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.support.v7.widget.SearchView;
 
 public class ActivityPrincipal extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
@@ -15,6 +17,8 @@ public class ActivityPrincipal extends ActionBarActivity implements ActionBar.On
      * Essa será a chave de serialização usada para armazenar o estado atual do seletor de seção.
      */
     private static final String ESTADO_ATUAL_NAVIGATION_SELECTOR = "navigation_item_selecionado";
+
+    private Menu mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,23 +76,35 @@ public class ActivityPrincipal extends ActionBarActivity implements ActionBar.On
     public boolean onCreateOptionsMenu(Menu menu) {
         //Criação do menu. Basicamente, inflar o layout do xml
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem item = menu.findItem(R.id.item_busca);
+        MenuItemCompat.setActionView(item, new SearchView(ActivityPrincipal.this));
+        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+
+        mMenu = menu;
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Método chamado quando um item do menu é selecionado.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            pushNovoFragmento(getString(R.string.configuracoes), getString(R.string.configuracoes));
-            return true;
-        }else if(id == android.R.id.home)
+        switch (item.getItemId())
         {
-            voltarActionBarStatusInicial();
-            getSupportActionBar().setSelectedNavigationItem(0);
-            getSupportFragmentManager().popBackStack();
-            return true;
+            case R.id.action_settings:
+                pushNovoFragmento(getString(R.string.configuracoes),
+                        getString(R.string.configuracoes));
+                break;
+            case android.R.id.home:
+                voltarActionBarStatusInicial();
+                getSupportActionBar().setSelectedNavigationItem(0);
+                getSupportFragmentManager().popBackStack();
+                break;
+            case R.id.item_busca:
+                MenuItemCompat.setShowAsAction(item,MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
+                break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -140,6 +156,9 @@ public class ActivityPrincipal extends ActionBarActivity implements ActionBar.On
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+
+        MenuItem busca = mMenu.findItem(R.id.item_busca);
+        MenuItemCompat.setShowAsAction(busca, MenuItemCompat.SHOW_AS_ACTION_NEVER);
     }
 
     protected void voltarActionBarStatusInicial()
@@ -149,5 +168,8 @@ public class ActivityPrincipal extends ActionBarActivity implements ActionBar.On
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+
+        MenuItem busca = mMenu.findItem(R.id.item_busca);
+        MenuItemCompat.setShowAsAction(busca, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
     } 
 }
