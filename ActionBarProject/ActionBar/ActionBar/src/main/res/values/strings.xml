@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ActionBar</string>
+    <string name="titulo_secao_1">Seção 1</string>
+    <string name="titulo_secao_2">Seção 2</string>
+    <string name="titulo_secao_3">Seção 3</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ola_mundo">Olá novo mundo</string>
+
+</resources>
