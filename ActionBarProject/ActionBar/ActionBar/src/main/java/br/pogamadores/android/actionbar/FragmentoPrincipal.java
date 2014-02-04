@@ -1,3 +1,11 @@
+// **************************************************************
+// Copyright (c) POGAmadores
+// Este documento foi feito para o ensino de programação
+// através de vídeos e textos. Tendo isso em mente e garantindo
+// a aplicação deste copyright para projetos futuros, o uso deste
+// documento é livre.
+// **************************************************************
+
 package br.pogamadores.android.actionbar;
 
 import android.os.Bundle;
