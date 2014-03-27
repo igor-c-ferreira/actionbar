@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.support.v7.widget.SearchView;
 
 public class ActivityPrincipal extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
@@ -85,13 +84,7 @@ public class ActivityPrincipal extends ActionBarActivity implements ActionBar.On
     public boolean onCreateOptionsMenu(Menu menu) {
         //Criação do menu. Basicamente, inflar o layout do xml
         getMenuInflater().inflate(R.menu.main, menu);
-
-        MenuItem item = menu.findItem(R.id.item_busca);
-        MenuItemCompat.setActionView(item, new SearchView(ActivityPrincipal.this));
-        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
-
         mMenu = menu;
-
         return true;
     }
 
